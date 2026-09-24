@@ -74,3 +74,9 @@ dialog = TaskDialog('This TaskDialog has Buttons ',   #Başlık
             show_close=True)
 dialog.show()
 ```
+
+```
+from rpw.ui.forms import CommandLink, TaskDialog #Bu çalışmıyor.
+CommandLink('Open Dialog')
+TaskDialog('Title', commands=[CommandLink]) #Eğer buton tıklanmazsa text döner.
+```
