@@ -18,3 +18,53 @@ Hook ise bir islem olduğunda verileri karsılaştırmaya yarar.
 Panel düzenini yaml dosyası belirler.
 
 <img width="779" height="313" alt="image" src="https://github.com/user-attachments/assets/f5fa5438-63b1-4e07-b633-9fe2f071ba05" />
+
+# UI ve Dialog Geliştirme
+
+Burada amaç form oluşturma ve burada bazı tepkileri oluşturmak.
+
+## Form Oluşturmak
+
+Amaç burada form açmak ve bu formda işlemler yapabilmek.Hatta bu verileri başka yerlere aktarabilmek.
+Bunun için ilk olarak form açılabilmesini sağlayabilmek için buton içerisindeki script dosyasını işleyerek yaparız.
+
+```from rpw.ui.forms import Console
+    from rpw.ui.forms import SelectFromList
+
+value = SelectFromList('Form Başlığı', ['1','2','3'])
+#İlk alanda form başlığı sonraki alanda da seçenekleri belirleriz.
+print(value)
+
+# Dictionary
+value = SelectFromList('Test Window', {'Text':str, 'Number':int}) #dictionary olarak da değer dondurebiliriz.
+# User clicks Text
+print(value)
+```
+
+### TEXT INPUT
+
+```from rpw.ui.forms import TextInput
+  value = TextInput('Title', default="3") #Burada custom olarak text yazabiliriz.
+print(value)
+```
+## TASK DIALOG
+<img width="469" height="343" alt="image" src="https://github.com/user-attachments/assets/97de9401-94d7-4019-be69-66e4d2f24210" />
+
+```
+from rpw.ui.forms import CommandLink, TaskDialog
+
+commands= [CommandLink('Open Dialog', return_value='Open'),
+            CommandLink('Command', return_value=lambda: True)]
+
+
+dialog = TaskDialog('This TaskDialog has Buttons ',   #Başlık
+ title_prefix=False,
+            content="Further Instructions",          #Yazı
+            commands=commands,                       
+             buttons=['Cancel', 'OK', 'RETRY'],
+            footer='It has a footer',
+            # verification_text='Add Verification Checkbox',
+            # expanded_content='Add Expanded Content',
+            show_close=True)
+dialog.show()
+```
