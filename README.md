@@ -22,6 +22,9 @@ Panel düzenini yaml dosyası belirler.
 # UI ve Dialog Geliştirme
 
 Burada amaç form oluşturma ve burada bazı tepkileri oluşturmak.
+Bunun için Window Presentation Foundation ve Model-View-Modelview ı ogrenmek gereklidir.
+Ama bunlar daha advance konulardır.
+
 
 ## Form Oluşturmak
 
