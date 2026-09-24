@@ -80,3 +80,33 @@ from rpw.ui.forms import CommandLink, TaskDialog #Bu çalışmıyor.
 CommandLink('Open Dialog')
 TaskDialog('Title', commands=[CommandLink]) #Eğer buton tıklanmazsa text döner.
 ```
+## ALERT MESAJI
+
+<img width="442" height="189" alt="image" src="https://github.com/user-attachments/assets/9349dc50-060a-434a-a90b-
+f22f08c16149" />
+
+```from rpw.ui.forms import Alert
+Alert('Your Message', title="Title", header="Header Text") #Bu alarm mesajı JS gibi gorunuyor.
+Alert('You need to select Something', exit=True)
+```
+
+
+## FLEXFORM
+
+<img width="400" height="324" alt="image" src="https://github.com/user-attachments/assets/c13186ce-f7e6-42f8-8b08-ad1dfec83dc9" />
+
+Burada biz bir menü çubuğu ayarlarız.
+```
+from rpw.ui.forms import (FlexForm, Label, ComboBox, TextBox, TextBox,Separator, Button, CheckBox)
+
+components = [Label('Pick Style:'),
+                    ComboBox('combobox1', {'Opt 1': 10.0, 'Opt 2': 20.0}),
+                    Label('Enter Name:'),
+                    TextBox('textbox1', Text="Default Value"),
+                    CheckBox('checkbox1', 'Check this'),
+                    Separator(),
+                    Button('Select')]
+
+form = FlexForm('Title', components)
+form.show()
+```
