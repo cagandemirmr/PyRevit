@@ -25,6 +25,9 @@ Burada amaç form oluşturma ve burada bazı tepkileri oluşturmak.
 
 ## Form Oluşturmak
 
+<img width="401" height="131" alt="image" src="https://github.com/user-attachments/assets/3b275fc5-f607-4ab2-a5fd-39166680a3eb" />
+
+
 Amaç burada form açmak ve bu formda işlemler yapabilmek.Hatta bu verileri başka yerlere aktarabilmek.
 Bunun için ilk olarak form açılabilmesini sağlayabilmek için buton içerisindeki script dosyasını işleyerek yaparız.
 
@@ -42,6 +45,9 @@ print(value)
 ```
 
 ### TEXT INPUT
+
+<img width="403" height="130" alt="image" src="https://github.com/user-attachments/assets/c0fd1527-96a0-4c36-bb30-4e201d891281" />
+
 
 ```from rpw.ui.forms import TextInput
   value = TextInput('Title', default="3") #Burada custom olarak text yazabiliriz.
