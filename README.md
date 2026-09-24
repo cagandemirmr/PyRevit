@@ -10,6 +10,8 @@ Kurulumda belki de biraz mücadele ederek şunu öğrendim.Extension dosyası .e
 
 .tab ise bizim plug inimimizin UI kısmıdır.İçerisinde tabların farklı alanlarını ifade eden .panel dosyaları vardır.Panellerin altında da .button ile biten dosyalar bulunur.Bu butonların her birinde 96 x 96px boyutlarında png ler bulunur. 
 
+Hook ise bir islem olduğunda verileri karsılaştırmaya yarar.
+
 
 # Plugin de Dash Panel Düzeni
 
