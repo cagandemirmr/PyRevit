@@ -23,93 +23,52 @@ Panel düzenini yaml dosyası belirler.
 
 Burada amaç form oluşturma ve burada bazı tepkileri oluşturmak.
 Bunun için Window Presentation Foundation ve Model-View-Modelview ı ogrenmek gereklidir.
-Ama bunlar daha advance konulardır.
+Ama bunlar daha advance konulardır.PRW ise donma sorunlarından dolayı terk edilmiştir.
 
 
 ## Form Oluşturmak
 
-<img width="401" height="131" alt="image" src="https://github.com/user-attachments/assets/3b275fc5-f607-4ab2-a5fd-39166680a3eb" />
+<img width="700" height="116" alt="image" src="https://github.com/user-attachments/assets/5a1866b3-3f1c-4eb0-ac17-769e1e1ae16b" />
 
-
-Amaç burada form açmak ve bu formda işlemler yapabilmek.Hatta bu verileri başka yerlere aktarabilmek.
-Bunun için ilk olarak form açılabilmesini sağlayabilmek için buton içerisindeki script dosyasını işleyerek yaparız.
-
-```from rpw.ui.forms import Console
-    from rpw.ui.forms import SelectFromList
-
-value = SelectFromList('Form Başlığı', ['1','2','3'])
-#İlk alanda form başlığı sonraki alanda da seçenekleri belirleriz.
-print(value)
-
-# Dictionary
-value = SelectFromList('Test Window', {'Text':str, 'Number':int}) #dictionary olarak da değer dondurebiliriz.
-# User clicks Text
-print(value)
+``` from pyrevit import forms
+ops = ['option1', 'option2', 'option3', 'option4']
+forms.CommandSwitchWindow.show(ops, message='Select Option')
+# ops2= forms.CommandSwitchWindow.show(ops, message='Select Option') #Eğer bir değişkene atarsak ozaman değeri alabiliriz.
 ```
 
-### TEXT INPUT
+## FLEX FORM
 
-<img width="403" height="130" alt="image" src="https://github.com/user-attachments/assets/c0fd1527-96a0-4c36-bb30-4e201d891281" />
+<img width="706" height="113" alt="image" src="https://github.com/user-attachments/assets/4ed428fc-f9ff-4a8c-8930-bc07d3cd5dcb" />
 
+Burada Serbest sitil takılırız.
 
-```from rpw.ui.forms import TextInput
-  value = TextInput('Title', default="3") #Burada custom olarak text yazabiliriz.
-print(value)
-```
-## TASK DIALOG
-<img width="469" height="343" alt="image" src="https://github.com/user-attachments/assets/97de9401-94d7-4019-be69-66e4d2f24210" />
-
-```
-from rpw.ui.forms import CommandLink, TaskDialog
-
-commands= [CommandLink('Open Dialog', return_value='Open'),
-            CommandLink('Command', return_value=lambda: True)]
-
-
-dialog = TaskDialog('This TaskDialog has Buttons ',   #Başlık
- title_prefix=False,
-            content="Further Instructions",          #Yazı
-            commands=commands,                       
-             buttons=['Cancel', 'OK', 'RETRY'],
-            footer='It has a footer',
-            # verification_text='Add Verification Checkbox',
-            # expanded_content='Add Expanded Content',
-            show_close=True)
-dialog.show()
+``` from pyrevit import forms
+ops = ['option1', 'option2', 'option3', 'option4']
+switches = ['switch1', 'switch2']
+cfgs = {'option1': { 'background': '0xFF55FF'}} #Burada onlara renk veririz.
+rops, rswitches = forms.CommandSwitchWindow.show(
+    ops,
+     switches=switches,
+     message='Select Option',
+     config=cfgs)
 ```
 
+## Loading Bar
+Ben bu kodu çalıştırdım ancak bir şey görmedim.
+``` from pyrevit import forms
+count = 1
+with forms.ProgressBar(title='my command progress message') as pb:
+    # do stuff
+    pb.update_progress(count, 100)
+    count += 1
 ```
-from rpw.ui.forms import CommandLink, TaskDialog #Bu çalışmıyor.
-CommandLink('Open Dialog')
-TaskDialog('Title', commands=[CommandLink]) #Eğer buton tıklanmazsa text döner.
-```
-## ALERT MESAJI
 
-<img width="442" height="189" alt="image" src="https://github.com/user-attachments/assets/9349dc50-060a-434a-a90b-
-f22f08c16149" />
+## Seçme İşlemi
+<img width="610" height="740" alt="image" src="https://github.com/user-attachments/assets/306378b4-2cfb-43e2-aa4d-1b3ad61a7878" />
 
-```from rpw.ui.forms import Alert
-Alert('Your Message', title="Title", header="Header Text") #Bu alarm mesajı JS gibi gorunuyor.
-Alert('You need to select Something', exit=True)
+```from pyrevit import forms
+items = ['item1', 'item2', 'item3']
+forms.SelectFromList.show(items, button_name='Select Item')
 ```
 
 
-## FLEXFORM
-
-<img width="400" height="324" alt="image" src="https://github.com/user-attachments/assets/c13186ce-f7e6-42f8-8b08-ad1dfec83dc9" />
-
-Burada biz bir menü çubuğu ayarlarız.
-```
-from rpw.ui.forms import (FlexForm, Label, ComboBox, TextBox, TextBox,Separator, Button, CheckBox)
-
-components = [Label('Pick Style:'),
-                    ComboBox('combobox1', {'Opt 1': 10.0, 'Opt 2': 20.0}),
-                    Label('Enter Name:'),
-                    TextBox('textbox1', Text="Default Value"),
-                    CheckBox('checkbox1', 'Check this'),
-                    Separator(),
-                    Button('Select')]
-
-form = FlexForm('Title', components)
-form.show()
-```
