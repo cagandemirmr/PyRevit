@@ -70,5 +70,12 @@ with forms.ProgressBar(title='my command progress message') as pb:
 items = ['item1', 'item2', 'item3']
 forms.SelectFromList.show(items, button_name='Select Item')
 ```
+Çoklu Seçim İçin
 
+<img width="612" height="742" alt="image" src="https://github.com/user-attachments/assets/04383500-5e3f-4d3e-bc7a-542ce4408ed0" />
+
+```from pyrevit import forms
+items = ['item1', 'item2', 'item3']
+forms.SelectFromList.show(items, button_name='Select Item',multiselect=True)
+```
 
