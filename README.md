@@ -78,4 +78,79 @@ forms.SelectFromList.show(items, button_name='Select Item')
 items = ['item1', 'item2', 'item3']
 forms.SelectFromList.show(items, button_name='Select Item',multiselect=True)
 ```
+## Ask_for_string
+<img width="483" height="196" alt="image" src="https://github.com/user-attachments/assets/d0e1eb1b-91f8-4b79-bc32-20a0e5ad00b0" />
 
+```
+from pyrevit import forms
+value = forms.ask_for_string(
+             default='some-tag',
+             prompt='Enter new tag name:',
+             title='Tag Manager')
+```
+## ask_for_one_string
+
+<img width="487" height="333" alt="image" src="https://github.com/user-attachments/assets/9723f489-d000-4fb3-9bb2-74bfcba19b1e" />
+
+```
+forms.ask_for_unique_string(
+            prompt='Enter a Unique Name',
+             title="Hello",
+             reserved_values=['Ehsan', 'Gui', 'Guido'])
+```
+
+## ask_for_one_item
+
+<img width="485" height="185" alt="image" src="https://github.com/user-attachments/assets/cc69ba18-a109-4b60-a999-ebf8d5c0b414" />
+
+
+```
+forms.ask_for_one_item(
+             ['test item 1', 'test item 2', 'test item 3'],
+             default='test item 2',
+             prompt='test prompt',
+             title='test title'
+         )
+```
+
+# Kullanıcı Onayı Alma
+
+<img width="439" height="185" alt="image" src="https://github.com/user-attachments/assets/014dd70a-0046-4941-8cb5-eb341e8cedc6" />
+
+Sadece bilgi vermek amaçlıdır.
+```
+from Autodesk.Revit.UI import TaskDialog, TaskDialogCommonButtons, TaskDialogResult
+
+dialog = TaskDialog("Merhaba Revit")
+dialog.MainInstruction = "İşlem Başarılı"
+dialog.MainContent = "Veriler güncellendi."
+dialog.CommonButtons = TaskDialogCommonButtons.Ok | TaskDialogCommonButtons.Cancel
+dialog.DefaultButton = TaskDialogResult.Ok
+
+result = dialog.Show()
+if result == TaskDialogResult.Ok:
+    print("Tamam tıklandı")
+```
+
+<img width="443" height="241" alt="image" src="https://github.com/user-attachments/assets/a3338a5e-aa99-4115-be62-1980635df28f" />
+
+```
+from Autodesk.Revit.UI import (TaskDialog, TaskDialogCommandLinkId, TaskDialogResult)
+
+dialog = TaskDialog("Karar")
+dialog.MainContent = "Yerleştirme yöntemini seçin:"
+dialog.AddCommandLink( #Seçenek belirtmek için addcommandlink kullanırız.
+    TaskDialogCommandLinkId.CommandLink1,
+    "Basit Yerleştirme Noktası",
+    "Serbest parçalar için")
+dialog.AddCommandLink(
+    TaskDialogCommandLinkId.CommandLink2,
+    "Yüzey Referansı",
+    "Duvar/yüzeye yerleştirir")
+
+result = dialog.Show()
+if result == TaskDialogResult.CommandLink1:
+    print("Basit yöntem seçildi")
+elif result == TaskDialogResult.CommandLink2:
+    print("Yüzey referansı seçildi")
+```
