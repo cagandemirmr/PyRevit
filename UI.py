@@ -162,7 +162,7 @@ ornek_gorunumler = {}
 #Tuşa bastığımda sonra Bu listeye geleyim ve onu ekrana yazdırayım.
 #Tıkladığımda/seçtiğimde da o view a gideyim.
 
-views = uidoc.GetOpenUIViews()
+views = uidoc.GetOpenUIViews() #Pickle ile bu goruntulerı alırız.
 
 for view in views:
     view_element = doc.GetElement(view.ViewId)
@@ -171,20 +171,20 @@ for view in views:
     if view_element:
         v_id = view_id.IntegerValue
         v_name = view_element.Name
-        ornek_gorunumler[v_name] = doc.GetElement(view_id)
+        ornek_gorunumler[v_name] = doc.GetElement(view_id) #GetElement ile view ları alırız.
 
 
 
 # Arayüzü Gösterme Şablonu
 secilenler = forms.SelectFromList.show(
-    list(ornek_gorunumler.keys()),
+    list(ornek_gorunumler.keys()), #Bu parametre list olarak kabul aldığı için keys leri list e çevirdim
     title="Görünüm Listesi",
     button_name="Seçilenleri Sırala",
     multiselect=False
 )
 
 if secilenler:
-    uidoc.ActiveView = ornek_gorunumler[secilenler]
+    uidoc.ActiveView = ornek_gorunumler[secilenler] #ActiveView u direkt mevcut view atarak bunu cozeriz.
 
 
 
